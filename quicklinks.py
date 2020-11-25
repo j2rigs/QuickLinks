@@ -60,19 +60,6 @@ def meetings():
             continue
 
 # --- Button 5 ---
-# daily time record reminder before closing the app
-
-def exit():
-    ask = messagebox.askyesnocancel(" ","DTR complete?")
-    if ask == None:
-        return
-    elif ask == True:
-        close()
-    else:
-        messagebox.showinfo("Redirecting..", "Opening TIMEDOCTOR")
-        webbrowser.open('https://company.timedoctor.com/#/edit-time')
-
-# --- Button 6 ---
 
 def settings():
     try:
@@ -263,6 +250,19 @@ def settings():
         save.config(text= "UPDATE")
 
     settings.mainloop()
+
+# --- Button 6 ---
+# daily time record reminder before closing the app
+
+def exit():
+    ask = messagebox.askyesnocancel(" ","DTR complete?")
+    if ask == None:
+        return
+    elif ask == True:
+        close()
+    else:
+        messagebox.showinfo("Redirecting..", "Opening TIMEDOCTOR")
+        webbrowser.open('https://company.timedoctor.com/#/edit-time')
     
 # --- Terminate ---
 
