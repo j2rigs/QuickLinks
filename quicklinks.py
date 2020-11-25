@@ -5,6 +5,11 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import simpledialog
 
+def getData():
+    with open(os.path.join(os.path.expanduser("~/Documents"),'data.config'), 'r') as source:
+        rawSource = eval(source.readline())
+    return rawSource
+    
 # --- Button 1 ---
 # opens all work related websites in one button click
 
