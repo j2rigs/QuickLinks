@@ -27,17 +27,17 @@ def workApps():
         subprocess.Popen(['open', app])
 
 # --- Button 3 ---
-# quick access company knowledge base data
+# quick access internal or external search queries
 
 def quickLink():
     while True:
-        searchEntry = simpledialog.askstring("Support KB search", "Enter search keywords:")
+        searchEntry = simpledialog.askstring("Search", "Enter search keywords:")
         if searchEntry == "":
             messagebox.showinfo(" ", "No keyword entered.")
             continue
         if searchEntry == None:
             return
-        quickLink = 'http://companyKBwebsite.com/search/' + searchEntry
+        quickLink = 'https://www.google.com/search?q=' + searchEntry # you can use replace this with internal knowledge base or repository
         webbrowser.open(quickLink)
         return
 
