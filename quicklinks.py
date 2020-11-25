@@ -260,6 +260,7 @@ def settings():
         save.config(text= "UPDATE")
 
     settings.mainloop()
+    
 # --- Terminate ---
 
 def close():
@@ -288,4 +289,7 @@ btn5.pack(expand=True, padx=40, pady=10)
 btn6 = tk.Button(text="EXIT", command=exit, width=22, height=1, fg='blue')
 btn6.pack(expand=True, padx=40, pady=10)
 
-main.mainloop()
+if os.path.exists(os.path.expanduser("~/Documents/data.config")):
+    main.mainloop()
+else:
+    settings()
