@@ -9,24 +9,22 @@ def getData():
     with open(os.path.join(os.path.expanduser("~/Documents"),'data.config'), 'r') as source:
         rawSource = eval(source.readline())
     return rawSource
-    
+
 # --- Button 1 ---
 # opens all work related websites in one button click
 
 def workSites():
-    webbrowser.open('https://gmail.com') # or company email
-    webbrowser.open('https://app.frontapp.com/inboxes/')
-    webbrowser.open('http://admin.companywebsite.com') 
-    webbrowser.open('https://trello.com')
-    webbrowser.open('https://isidis-company.awsapps.com')
+    for items in (getData()[0]):
+        webbrowser.open(items)
 
 # --- Button 2 ---
 # opens all work related apps/tools in one button click
 
 def workApps():
-    subprocess.Popen(['open', '/Applications/Slack.app/'])
-    subprocess.Popen(['open', '/Applications/Trello.app/'])
-    subprocess.Popen(['open', '/Applications/TimeDoctor.app/'])
+    for items in (getData()[1]):
+        app = "/Applications/" + items + ".app/"
+        os.chdir(".")
+        subprocess.Popen(['open', app])
 
 # --- Button 3 ---
 # quick access company knowledge base data
