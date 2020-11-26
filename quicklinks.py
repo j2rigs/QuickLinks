@@ -45,19 +45,38 @@ def quickLink():
 # quick access to scheduled weekly/monthly meetings
 
 def meetings():
-    while True:
-        answer = simpledialog.askinteger("Meeting Options", "1. Support\n2. One-On-One")
-        if answer == None:
-            return
-        if answer == 1:
-            webbrowser.open('https://meet.google.com/team-meetings')
-            return
-        elif answer == 2:
-            webbrowser.open('https://meet.google.com/1-on-1-meeting')
-            return
-        else:
-            messagebox.showinfo(" ", "Incorrect option!")
-            continue
+    def getlink():
+        link = linklist.curselection()
+        pos = 0
+        for items in link:
+            indx = int(items) - pos
+            meetinglink = ((getData()[2])[indx])
+            webbrowser.open(meetinglink)
+            pop.destroy()
+
+    counter = 0
+
+    pop = tk.Toplevel()
+    pop.title("Meeting links")
+    pop.geometry("+150+178")
+
+    topframe = tk.Frame(pop)
+    topframe.pack(pady = 5)
+    botframe = tk.Frame(pop)
+    botframe.pack()
+    linklist = tk.Listbox(topframe, height=3, width=21, bd=0)
+    for items in getData()[3]:
+        linklist.insert(counter, ("  " + items))
+        counter += 1
+    linklist.pack(fill="y", side=LEFT)
+    sb = tk.Scrollbar(topframe)
+    sb.pack(side=LEFT)
+    linklist.config(yscrollcommand=sb.set)
+    sb.config(command=linklist.yview)
+    cancel = tk.Button(botframe, text="Cancel", command=pop.destroy, height=1, width=9)
+    cancel.pack(side=RIGHT, padx=8, pady=8)
+    okbtn = tk.Button(botframe, text="OK", command=getlink, height=1, width=9)
+    okbtn.pack(side=RIGHT, pady=8)
 
 # --- Button 5 ---
 
